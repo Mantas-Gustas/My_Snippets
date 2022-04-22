@@ -6,14 +6,26 @@ These are the settings for sending email in Django via Gmail.
 """
 
 
-#DataFlair
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'your_account@gmail.com'
-EMAIL_HOST_PASSWORD = 'your accounts password'
-
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')  # this is where you need to create your ENVIRON Variable
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')  # the EMAIL_USER and EMAIL_PASS are Enviro Variables holding sensitive info
+# to create enviro variables see below instructions
+# 1. Install Django Environ - In your terminal, inside the project directory, type: pip install django-environ
+# 2. Import environ in settings.py - import environ
+# 3. Initialise environ - Below your import in settings.py:
+""" import environ
+# Initialise environment variables #
+env = environ.Env()
+environ.Env.read_env() """
+# 4. Create your .env file - In the same directory as settings.py, create a file called ‘.env’
+# 5. Declare your environment variables in .env - Make sure you don’t use quotations around strings.
+# 6. IMPORTANT: Add your .env file to .gitignore
+# 7. Replace all references to your environment variables in settings.py
 
 """
 EMAIL_BACKEND
