@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block body_block %}
+<h2> search for / </h2>
+<h1>{{ context.k1 }}</h1>
+{% endblock %}
+
+<!-- Here, we used a new tag at the beginning. {% extends ‘base.html’ %} is clear in itself. This tag will inform Django to add base.html code in others.html. After that we used {% block body_block %} …. {% endblock %}, which contains this page’s unique content. This block is swapped with the block in base.html.-->

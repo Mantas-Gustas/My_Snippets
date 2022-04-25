@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block body_block %}
+{% load static %}
+<img src="{% static 'images/image1.jpeg' %}" , width="500" , height="400">
+<h1>This is about the developers of this webpage</h1>
+<h2>Django is the best framework</h2>
+<h1>DataFlair Team</h1>
+<h2>Year : {{ time | date:'Y' }}</h2>
+<h2>Month : {{ time | date:'M' }}</h2>
+{% endblock %}
+
+
+<!-- See the 3rd line. load static  tag will inform Django that there are static files in this template. Django will then check for the related static files. Then sends them together with the HTML code.
+
+After that, we gave the src of the image tag. The source of image tag is a Django tag. Here we used static keyword and the path to the image. The path is not specified from the root directory.
+
+The STATIC_URL value is automatically added to the source of the image file, even though it is coming from a different directory altogether.
+
+After that, we have used filters –  time |date:‘Y’.-->
+
+
+<!-- What are Django Template Filters?
+The  pipe character indicates the use of template filters. Here, the time dictionary contains a Python DateTime object. Then, we wanted to print only year, therefore we used a date filter. This will chop-off all other parts except year from time.
+
+Template filters are used to make data received from the server more presentable. There are lots of filters to customize the look and feel of the data received. We can also create our own custom data filters. It’s a vast topic and needs a blog of its own. We will be covering the same in upcoming articles. -->

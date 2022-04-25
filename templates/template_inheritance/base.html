@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HomePage</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+    <center>
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <li><a class="navbar-brand" href="{% url 'homepage' %}">HomePage</a></li>
+                    <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
+                    <li><a class="navbar-link" href="{% url 'otherpage' %}">Other</a></li>
+                    <li><a class="navbar-link" href="{% url 'aboutpage' %}">About</a></li>
+                    <li><a class="navbar-link" href="{% url 'registration-form' %}">Register</a></li>
+                    <li><a class="navbar-link" href="{% url 'subscribe' %}">Subscribe</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+
+            {% block body_block %}
+            <h1>Welcome to the Home-Page</h1>
+            <h2> search for others/ </h2>
+            <h2>we are in the block of home page</h2>
+            {% endblock %}
+    </center>
+</body>
+
+</html>
+
+<!-- In this code, The tag, block body_block is used for template inheritance. We are actually replacing this section of code between block body_block ….  endblock. The name body_block can be of your choice.
+
+There can be multiple blocks of this type. It’s up to you to change them or use them as it is.-->
+
+<!-- In this base.html, we have added some new elements. Let’s understand them one by one.
+
+Bootstrap CSS: <link> tag is used to add CSS file from Bootstrap. Here rather than original CSS file, we just added the server URL of the same. This path can be directly copied from the Bootstrap website, its an opensource project.
+
+Then we used some bootstrap classes with HTML. The classes like navbar, navbar-nav, navbar-link, etc are all Bootstrap CSS classes. They are just for front-end and to give you an idea of bootstrap. You can get more details on https://getbootstrap.com/
+
+The href of anchor tags: This is the implementation of relative urls. See the urls in the href attribute of <a> tags. Instead of using complete urls, we are actually calling view functions directly. In the previous section, we stated you to remember names in urls.
+
+The  url ‘url_name’  is replaced by the actual URL. And, this is very helpful for bigger projects.
+
+The main advantage is that you can name the function. So, instead of URL (which could go wrong), we write url-name.-->
