@@ -1,24 +1,25 @@
 {% extends 'base.html' %}
 {% block body_block %}
 
-<body>
-    <center>
-        <div class="jumbotron">
-            <h1 class="display-4">DataFlair Django File Uploading</h1>
-            {% block replace %}
-            <p class="lead">To make a user profile and upload the files fill this form</p>
-            <hr class="my-4">
-            <form method="POST" enctype="multipart/form-data">
-                <!-- Very Important csrf Token -->
-                {% csrf_token %}
-                <table>
-                    {{ form.as_table }}
-                </table>
-                <input type="submit" class="btn btn-primary btn-lg" name="register">
-        </div>
-    </center>
-    {% endblock %}
-</body>
+
+<center>
+    <div class="jumbotron">
+        <h1 class="display-4">DataFlair Django File Uploading</h1>
+        {% block replace %}
+        <p class="lead">To make a user profile and upload the files fill this form</p>
+        <hr class="my-4">
+        <form method="POST" enctype="multipart/form-data">
+            <!-- Very Important csrf Token -->
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table>
+            <input type="submit" class="btn btn-primary btn-lg" name="register">
+        </form>
+    </div>
+</center>
+{% endblock %}
+
 {% endblock %}
 
 <!-- It’s a simple template rendering the form. We have also used some bootstrap. You can check out our Django bootstrap tutorial for the same. The important part is the form attribute enctype. This attribute allows us to send the files with our data.

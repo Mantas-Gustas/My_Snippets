@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block body_block %}
+
+
+<div class="display-3 color-red">
+    <center>DataFlair AJAX Tutorial<br>Post APP</center>
+</div>
+{% for post in posts %}
+<div class='container jumbotron'>
+    <h3 class="display-5">{{ forloop.counter }}. {{ post.post_heading }}</h3>
+    <p class="lead">{{ post.post_text }} </p>
+    <p>
+    <div type="text/css" class="container">Author : {{ post.post_author }}</div>
+    <a class="likebutton btn btn-primary btn-lg" id="like{{ post.id }}" href="#" data-catid="{{ post.id }}">Like</a>
+    </p>
+    <p id="message{{post.id}}">
+    </p>
+</div>
+{% endfor %}
+<script type="text/javascript">
+    $('.likebutton').click(function () {
+        var id;
+        id = $(this).attr("data-catid");
+        $.ajax(
+            {
+                type: "GET",
+                url: "like",
+                data: {
+                    post_id: id
+                },
+                success: function (data) {
+                    $('#like' + id).removeClass('btn btn-primary btn-lg');
+                    $('#like' + id).addClass('btn btn-success btn-lg');
+                }
+            })
+    });
+</script>
+
+{% endblock %}
+
+
+
+<!-- There are two important parts in this HTML file.
+
+Importing jQuery and Bootstrap
+Since jQuery is a JavaScript library, so it is essentially a static file for the server. It can be imported the same as
+bootstrap and other files. We chose to use it directly from CDN. The link can be found on jQuery’s official website. Similarly, we used the link tag with bootstrap. 
+
+Generating AJAX request from JavaScript
+Here, is the important part. If you have no idea of DOM, JavaScript Objects, then this might be difficult to understand.
+We will try our best to make it relatable.
+
+Focus on
+script script at the end of document. We have put our AJAX code there.We are using some of the properties of jQuery to call the object. The like button is the class of button that we are
+going to click. When the button is clicked, the function inside it is executed. That function has some objects in it.
+
+This is an XHR object. Actually, this is the speciality of $.ajax() method. It is what will make our code run on
+multiple browsers. Inside that, there is a JavaScript Object Datatype. JavaScript Object is similar to dictionaries in
+Python. This is for Pythonistas who don’t know JavaScript.
+
+Now, you can relate it easily.
+
+1. Type key: It takes in the method of request that we will send. Here, XHR is sent over the GET request.
+
+2. URL key: This is the URL of the call back function on the server. Remember the view function we created? This code
+will call that function without reloading the page.
+
+3. Data key: This key contains the data that we are sending to call back function. In this example, it contains the id
+of the post. It can be an object and can contain multiple values. You can also pass it in a JSON. It depends on your use
+case.
+
+4. Success method: JavaScript Objects have methods too. You can define methods like this easily. The methods are called
+properties of Objects. Success is a built-in response for $.ajax() method. This method will be executed when the AJAX
+request returns with a success response. It is one of the conveniences that jQuery provides to programs.
+
+5. Inside Success: There are two methods that we are executing inside success. The first one will remove the class
+inside the parenthesis (). Similarly, the other one will add the class.
+
+It is as simple as that. No, worries if you didn’t get it right the first time. -->

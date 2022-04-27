@@ -1,21 +1,24 @@
 {% extends 'base.html' %}
 {% block body_block %}
 
-<body>
-    <pre><center>
-        <h1>Registration Form</h1>
+
+<center>
+    <div class="jumbotron">
+        <h1 class="display-4">Registration Form</h1>
         <h3>DataFlair Django Tutorials</h3>
         <h2>{{ html }}</h2>
-        <form action = '' method="post">
-            <!-- Very Important csrf Token -->
+        <hr class="my-4">
+        <form action='' method="post">
+            <!-- Very Important csrfToken -->
             {% csrf_token %}
-        <table>
-            {{ form.as_table }}
-        </table>
-        <input type="submit" name="register">
-    </form>
-    </center></pre>
-</body>
+            <table>
+                {{ form.as_table }}
+            </table>
+            <input type="submit" name="register">
+        </form>
+    </div>
+</center>
+
 {% endblock %}
 
 
