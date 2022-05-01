@@ -1,0 +1,25 @@
+{% load cms_tags sekizai_tags %}
+<html>
+
+<head>
+    <title>{% page_attribute "page_title" %}</title>
+    {% render_block "css" %}
+</head>
+
+<body>
+    {% cms_toolbar %}
+    {% placeholder "content" %}
+    {% render_block "js" %}
+</body>
+
+</html>
+
+<!--The first line load  will load template libraries of Sekizai and CMS tags. Then there are tags of those libraries used in the HTML. The  page_attribute “page_title”  will extract the page title. You will see when we make our pages. The Django CMS has core elements called pages.
+
+These are the webpages or content pages.
+
+ render_block ‘css’  and  render_block ‘js’  are two Sekizai library tags. The rendered block will load the HTML blocks code. The name can change according to the user. Django Content Management System by-default gives CSS and js tags.
+
+It defines these HTML blocks which contain its CSS and JavaScript files. It is recommended that the CSS tag is used just before </head>. Similarly, js tag be used just before body tag.
+
+The other  cms_toolbar  will load the django cms toolbar.  placeholder  tag shall be present in the template to be useful for Django CMS. It will become clearer once we use a Django Content Management System.-->
